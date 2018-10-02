@@ -3,7 +3,7 @@ Simple script to label imgXXX.png images for training sets for DLC
 
 see https://github.com/AlexEMG/DeepLabCut
 
-Currently, generating a training set for DeepLabCut (DLC) requires opening randomly selected frames in FIJI or another editor. This script allows the user label the random frames in MATLAB and to proofread the labeling.
+Currently, generating a training set for DeepLabCut (DLC) requires opening randomly selected frames in FIJI or another editor. This script allows the user to label the random frames in MATLAB and to proofread the labeling.
 
 # Requirements
 
