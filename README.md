@@ -9,6 +9,8 @@ Currently, generating a training set for DeepLabCut (DLC) requires opening rando
 
 **Matlab 2018a or later**: Methods_LablelSelectedFramesForDLC.m makes use of matlab "Tables", a data structure similar to DataFrames in pandas or tables in R. The script uses function calls available only in 2018a or later.
 
+**distinguishable_colors**: the proofreading step below relies on plotting points for each feature in different colors that are easy to tell apart. This color map is produced by the matlab function distinguishable_colors(). Download it here: https://www.mathworks.com/matlabcentral/fileexchange/29702-generate-maximally-perceptually-distinct-colors; and put is somewhere on the matlab path.
+
 # Directions:
 
 First, follow directions on the DeepLabCut readme page to run "Step1_SelectRandomFrames_fromVideos.py". This first step will generate directories containing selected frames, with filenames "imgXXX.png" where XXX is the frame index. Note, this script generates .csv files for each body part, so in **myconfig.py** change the **multibodypartsfile** flag to **False**, as in the DLC reaching example.
