@@ -5,7 +5,7 @@
 % directory of images to label. Change this for every set of images, e.g.
 % if you have selected random frames from several movies.
 folder = 'C:''\Users\tony\';
-folder = 'C:\Users\tony\Code\DeepLabCut_Tony\Generating_a_Training_Set\data-femurTibiaJoint_IR_2Xobjective\EpiFlash2CB2T_Image_181007_F1_C1_1_20181007T133956'
+folder = 'C:\Users\tony\Code\DeepLabCut_Tony\Generating_a_Training_Set\data-femurTibiaJoint_IR_test\EpiFlash2T_Image_180621_F1_C1_29_20180621T131616';
 
 %% Bodyparts
 % define the body parts you want to label:
@@ -357,9 +357,9 @@ end
 img_idx = 1;
 while img_idx <= length(imnames)
     % load up each image,
-    I = imread(imnames{img_idx});
     % put a big title on the image,
-    txt.String = sprintf('Move points (then ''j'' or space: next, ''k'': back):\n%s (%d of %d)', imnames(img_idx).name, img_idx, length(imnames));
+    txt.String = sprintf('Move points (then ''j'' or space: next, ''k'': back):\n%s (%d of %d)', imnames{img_idx}, img_idx, length(imnames));
+    I = imread(imnames{img_idx});
     I = double(I);
     I = squeeze(I(:,:,1));
     
@@ -388,10 +388,15 @@ while img_idx <= length(imnames)
     end
     
     switch cmd_key
-        case ' ' || 'j'
+        case ' ' 
+            img_idx = img_idx+1;
+        case 'j'
             img_idx = img_idx+1;
         case 'k'
-            img_idx = img_idx+1;
+            img_idx = img_idx-1;
+            if img_idx<1
+                img_idx=1;
+            end
         otherwise
     end
 end
