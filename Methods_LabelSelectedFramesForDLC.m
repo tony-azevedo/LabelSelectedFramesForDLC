@@ -49,8 +49,8 @@ dispax.YTick = [];
 dispax.Tag = 'dispax';
 colormap(dispax,'gray')
 
-%% for each image
-    
+% for each image
+clear pnt    
 if exist([staticparts{1} '.csv'],'file') && ~REWRITE
     fprintf('Bodypart files have been written, next folder\n');
     return
@@ -93,8 +93,8 @@ else
     for pidx = 1:length(staticparts)
         part = staticparts{pidx};
         txt.String = part;
-        pnt(pidx) = impoint(dispax);
-        pnts(pidx,:) = pnt(pidx).getPosition;
+        pnt(pidx) = drawpoint(dispax);
+        pnts(pidx,:) = pnt(pidx).Position;
     end
     
     % Starting a table of static points
@@ -108,7 +108,7 @@ else
     T_static = table('Size',sz,'VariableTypes',varTypes,'VariableNames',varNames);
     
     for pidx = 1:length(pnt)
-        pos = pnt(pidx).getPosition;
+        pos = pnt(pidx).Position;
         T_static{1,pidx*2} = pos(1);
         T_static{1,pidx*2+1} = pos(2);
     end
@@ -134,7 +134,7 @@ else
         % record either the new position or the old
         T_static{img_idx,1} = {imnames(img_idx).name};
         for pidx = 1:length(pnt)
-            pos = pnt(pidx).getPosition;
+            pos = pnt(pidx).Position;
             T_static{img_idx,pidx*2} = pos(1);
             T_static{img_idx,pidx*2+1} = pos(2);
         end
@@ -199,17 +199,21 @@ for prtidx = 1:length(movingparts)
     end
     
     % put the established point on the image
-    pnt = impoint(dispax);
-    pos = pnt.getPosition;
+    pnt = drawpoint(dispax);
+    pos = pnt.Position;
+    delete(pnt);
+    
     T_moving{1,prtidx*2-1} = pos(1);
     T_moving{1,prtidx*2} = pos(2);
     dot = line(pos(1),pos(2),'marker','.','markersize',10,'markerfacecolor',[.6 .2 1],'markeredgecolor',[.6,.2,1],'tag','curpart');
     
-    displayf.Pointer = 'crosshair';
+    displayf.Pointer = 'crosshair'; drawnow; displayf.Pointer = 'crosshair'; drawnow
     % load up each image,
     
     delete(findobj('type','hggroup','tag','impoint'))
-    
+
+    displayf.Pointer = 'crosshair'; drawnow; displayf.Pointer = 'crosshair'; drawnow
+   
     for img_idx = 2:length(imnames)
         % load up each image,
         I = imread(imnames(img_idx).name);
@@ -231,6 +235,7 @@ for prtidx = 1:length(movingparts)
             movingdots(tprtidx).YData = T_moving{img_idx,tprtidx*2};
         end
         
+        displayf.Pointer = 'crosshair'; drawnow; displayf.Pointer = 'crosshair'; drawnow
         
         % then wait for a button click or a space bar
         keydown = waitforbuttonpress;
@@ -280,11 +285,21 @@ pause(.5);
 
 
 %% Proofreading step
+folder = pwd;
 cd(folder)
 fprintf('%s\n',folder);
+
+bodyparts = {'FemurTrochanterDorsal', 'FemurTrochanterVentral','FemurBristle3', 'FemurTip','FemurDorsalKneeBristle', 'FemurDorsalIndent','TibiaVentralKink','TibiaVentralMid','TibiaVentralBulge','TibiaDorsalBulge','TibiaDorsalMid','TibiaDorsalConstriction','Probe_end','Probe_shaft','EMG','Brightspot1','Brightspot2','Brightspot3'};
+
 uiwait(msgbox(['Proofreading video: ' folder],'New video','modal'));
 
 % Create the figure where you're going to click
+imnames = dir('img*');
+
+I = imread(imnames(1).name);
+I = double(I);
+I = squeeze(I(:,:,1));
+
 close all
 displayf = figure;
 set(displayf,'position',[120 10 fliplr(size(I))]+[0 0 0 10],'tag','big_fig');
@@ -294,6 +309,9 @@ displayf.ToolBar = 'none';
 dispax = axes('parent',displayf,'units','pixels','position',[0 0 fliplr(size(I))]);
 set(dispax,'box','off','xtick',[],'ytick',[],'tag','dispax');
 colormap(dispax,'gray')
+
+delete(pnt)
+clear pnt
 
 % if subsequent steps (Step2,Step3, etc) are run, then csv files will be
 % renamed to xls files. If so, these xls files cannot be read
