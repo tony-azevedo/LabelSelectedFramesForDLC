@@ -4,8 +4,10 @@
 
 % directory of images to label. Change this for every set of images, e.g.
 % if you have selected random frames from several movies.
-folder = 'C:''\Users\tony\';
-folder = 'C:\Users\tony\Code\DeepLabCut_Tony\Generating_a_Training_Set\data-femurTibiaJoint_IR_test\EpiFlash2T_Image_180621_F1_C1_29_20180621T131616';
+% folder = 'C:''\Users\tony\';
+% folder = 'C:\Users\tony\Code\DeepLabCut_Tony\Generating_a_Training_Set\data-femurTibiaJoint_IR_2Xobjective\EpiFlash2CB2T_Image_181007_F1_C1_2_20181007T134008';
+folder = pwd;
+fprintf('%s\n',folder);
 
 %% Bodyparts
 % define the body parts you want to label:
@@ -35,13 +37,16 @@ I = squeeze(I(:,:,1));
 %% Create the figure where you're going to click
 close all
 displayf = figure;
-set(displayf,'position',[120 10 fliplr(size(I))]+[0 0 0 10],'tag','big_fig');
+displayf.Position = [120 10 fliplr(size(I))]+[0 0 0 10];
+displayf.Tag = 'big_fig';
 displayf.MenuBar = 'none';
 displayf.ToolBar = 'none';
 
-
 dispax = axes('parent',displayf,'units','pixels','position',[0 0 fliplr(size(I))]);
-set(dispax,'box','off','xtick',[],'ytick',[],'tag','dispax');
+dispax.Box = 'off';
+dispax.XTick = [];
+dispax.YTick = [];
+dispax.Tag = 'dispax';
 colormap(dispax,'gray')
 
 %% for each image
