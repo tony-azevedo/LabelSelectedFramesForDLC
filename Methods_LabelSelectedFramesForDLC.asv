@@ -12,7 +12,6 @@ fprintf('%s\n',folder);
 %% Bodyparts
 % define the body parts you want to label:
 bodyparts = {'FemurTrochanterDorsal', 'FemurTrochanterVentral','FemurBristle3', 'FemurTip','FemurDorsalKneeBristle', 'FemurDorsalIndent','TibiaVentralKink','TibiaVentralMid','TibiaVentralBulge','TibiaDorsalBulge','TibiaDorsalMid','TibiaDorsalConstriction','Probe_end','Probe_shaft','EMG','Brightspot1','Brightspot2','Brightspot3','Hook_end','Hook_shaft'};
-setacqpref('FlyAnalysis','DLCBodyparts',bodyparts);
 % which of those are going to move between frames?
 movingparts = bodyparts([7:12]);
 % which of those are NOT going to move between frames?
@@ -290,7 +289,7 @@ folder = pwd;
 cd(folder)
 fprintf('%s\n',folder);
 
-bodyparts = getacqpref('FlyAnalysis','DLCBodyparts');
+bodyparts = {'FemurTrochanterDorsal', 'FemurTrochanterVentral','FemurBristle3', 'FemurTip','FemurDorsalKneeBristle', 'FemurDorsalIndent','TibiaVentralKink','TibiaVentralMid','TibiaVentralBulge','TibiaDorsalBulge','TibiaDorsalMid','TibiaDorsalConstriction','Probe_end','Probe_shaft','EMG','Brightspot1','Brightspot2','Brightspot3','Hook_end','Hook_shaft'};
 
 uiwait(msgbox(['Proofreading video: ' folder],'New video','modal'));
 

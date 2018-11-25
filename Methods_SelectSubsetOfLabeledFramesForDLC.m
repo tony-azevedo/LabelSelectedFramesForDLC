@@ -4,20 +4,20 @@
 
 % directory of images to label. Change this for every set of images, e.g.
 % if you have selected random frames from several movies.
-folder = 'C:''\Users\tony\';
-folder = pwd; %'C:\Users\tony\Code\DeepLabCut_Tony\Generating_a_Training_Set\data-femurTibiaJoint_IR5X\EpiFlash2T_Image_180621_F1_C1_29_20180621T131616';
+% folder = 'C:''\Users\tony\';
+folder_current = pwd; %'C:\Users\tony\Code\DeepLabCut_Tony\Generating_a_Training_Set\data-femurTibiaJoint_IR5X\EpiFlash2T_Image_180621_F1_C1_29_20180621T131616';
 
-mkdir(folder,'original_sampled')
+mkdir(folder_current,'original_sampled')
 
-N = 50;
+N = 25;
 
 %% Bodyparts
 % define the body parts you want to label:
-bodyparts = {'FemurTrochanterDorsal', 'FemurTrochanterVentral','FemurBristle3', 'FemurTip','FemurDorsalKneeBristle', 'FemurDorsalIndent','TibiaVentralKink','TibiaVentralMid','TibiaVentralBulge','TibiaDorsalBulge','TibiaDorsalMid','TibiaDorsalConstriction','Probe_end','Probe_shaft','EMG','Brightspot1','Brightspot2','Brightspot3'};
+bodyparts = getacqpref('FlyAnalysis','DLCBodyparts');
 XLS_EDIT_OK = 1;
 
 %% Select random frames from previously sampled frames
-cd(folder)
+% cd(folder)
 
 bdidx = 1;
 
@@ -82,7 +82,11 @@ for bdidx = 1:length(bodyparts)
     eval(['T_' bodyparts{bdidx} '.Properties.RowNames = T_' bodyparts{bdidx} '.Img;']);
     eval(['T_' bodyparts{bdidx} ' = T_' bodyparts{bdidx} '(rnd_idx,:);']);
     
-    movefile(fname,fullfile('original_sampled',fname));
+    if ~exist(fullfile('original_sampled',fname),'file')
+        movefile(fname,fullfile('original_sampled',fname));
+    else
+        fprintf('%s already exists\n',fullfile('original_sampled',fname));
+    end
     
     eval(['writetable(T_' bodyparts{bdidx} ',''' [bodyparts{bdidx} '.csv'] ''',''WriteRowNames'',false);']);
 
