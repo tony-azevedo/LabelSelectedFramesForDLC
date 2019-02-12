@@ -372,8 +372,7 @@ try delete(pnt); catch e, end
 for bdidx = 1:length(bodyparts)
     eval(['T_cnt = T_' bodyparts{bdidx} ';']);
     xy = T_cnt(imnames{1},2:3);
-    pnt(bdidx) = impoint(dispax,[xy.X,xy.Y]);
-    pnt(bdidx).setColor(clrs(bdidx,:));
+    pnt(bdidx) = drawpoint(dispax,'Position',[xy.X,xy.Y],'Color',clrs(bdidx,:),'Label',bodyparts{bdidx});
 end
 
 % for i = 1:length(imnames)
@@ -391,7 +390,7 @@ while img_idx <= length(imnames)
     for bdidx = 1:length(bodyparts)
         eval(['T_cnt = T_' bodyparts{bdidx} ';']);
         xy = T_cnt(imnames{img_idx},2:3);
-        pnt(bdidx).setPosition([xy.X,xy.Y]);
+        pnt(bdidx).Position = [xy.X,xy.Y];
     end
     
     % Allow user to move the points around a little
@@ -405,7 +404,7 @@ while img_idx <= length(imnames)
     
     % record either the new position or the old
     for bdidx = 1:length(bodyparts)
-        pos = pnt(bdidx).getPosition;
+        pos = pnt(bdidx).Position;
         eval(['T_' bodyparts{bdidx} '{''' imnames{img_idx} ''',2} = ' num2str(pos(1)) ';']);
         eval(['T_' bodyparts{bdidx} '{''' imnames{img_idx} ''',3} = ' num2str(pos(2)) ';']);
     end
