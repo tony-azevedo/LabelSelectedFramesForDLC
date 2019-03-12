@@ -86,15 +86,16 @@ Now the routine will loop back through each directory to proofread the labeling.
 
 This routine simply edits all of the bodypart.csv files.
 
+Note: you can rerun the proofreading step anytime from within the folder, just rerun that section of the script (a.k.a that cell).
+
 **Next Steps**
 
 Now you're ready to move on with the rest of the training as described at https://github.com/AlexEMG/DeepLabCut, starting with "Step2_ConvertingLabels2DataFrame.py".
 
-**Additional Scripts**
+**Happy clicking!**
+
+#Additional Scripts
 - Methods_CycleThroughDirectoriesAndApplyScript.m will start at the parent directory and navigate to each movie directory in turn and run Methods_LabelSelectedFramesForDLC.m. 
 - If you have labeled a movie in the past and would like to label additional features that don't tend to move but are likely to be falsely identified by DLC, you can use the Methods_AddNewStaticBodyPart.m script to do that. 
 - Finally, you might start by labelling e.g. 170 frames of a particular movie but may not want to continue training the network on all of them in the future. In that case, Methods_SelectSubsetOfLabeledFramesForDLC.m with extract a random set of N images (line 12), storing the originals in a subdirectory. 
-
-**Happy clicking!**
-
 
