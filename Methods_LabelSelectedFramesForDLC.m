@@ -1,11 +1,11 @@
 %% Script to label points in randomly selected frames.
-% Use Step1 code in python to collect random Frames. See Myconfig file for
+% Use Step1 code in DeepLabCut python code to collect random Frames. See Myconfig file for
 % all the different inputs
 
 % directory of images to label. Change this for every set of images, e.g.
 % if you have selected random frames from several movies.
 % folder = 'C:''\Users\tony\';
-% folder = 'C:\Users\tony\Code\DeepLabCut\Generating_a_Training_Set\data-femurTibiaJoint_IR5X\', cd(folder)
+folder = 'C:\Users\tony\Code\DeepLabCut\Generating_a_Training_Set\data-femurTibiaJoint_IR5X\', cd(folder)
 folder = pwd;
 fprintf('%s\n',folder);
 
