@@ -28,8 +28,6 @@ The main labeling script is Methods_LabelSelectedFramesForDLC.m. This script wil
 
 Additional scripts add a bit of functionality. For directions on their use, see below.
 
-Methods_CycleThroughDirectoriesAndApplyScript.m will start at the parent directory and navigate to each movie directory in turn and run Methods_LabelSelectedFramesForDLC.m. If you have labeled a movie in the past and would like to label additional features that don't tend to move but are likely to be falsely identified by DLC, you can use the Methods_AddNewStaticBodyPart.m script to do that. Finally, you might start by labelling 170 frames of a particular movie but may not want to continue training the network on all of them in the future. In that case, Methods_SelectSubsetOfLabeledFramesForDLC.m with extract a random set of N images (line 12), storing the originals in a subdirectory. 
-
 # Before running the script 
 
 **(1) edit the bodyparts variable:** 
@@ -64,7 +62,7 @@ The first part of the routine is to label static and moving parts. The functiona
     - Click on the location of the feature, a magenta dot will appear to indicate the location and the next img will appear.
   
 ![GitHub Logo](Labeling.PNG)
-Format: ![Alt Text](url)
+Format: Labeling parts of a fly leg (femur/tibia)
 
 After each feature is labeled, a .csv file is saved with the filename \<bodypart\>_points.csv. The static points are saved to a file "staticpoints.csv". If the labeling routine is interrupted for whatever reason, the script looks for saved "\<bodypart\>_points.csv" files and will skip those features, jumping to features that have not yet been labeled. If you want to relabel features, you can delete the "\<bodypart\>_points.csv" files or change the editing logicals on lines 17, 18, and 19.
 
@@ -74,13 +72,14 @@ Finally, the script saves a file with the naming convention "\<bodypart\>.csv" f
 
 Now the routine will loop back through each directory to proofread the labeling. The functionality is as follows:
 
--Show the first image.
+- Show the first image.
   - Drag the label locations to the appropriate feature. The locations of each bodypoint/feature has it's own color.
-  - Hit the space bar once the labels are in the correct locations.
+  - Hit the space bar or 'j' once the labels are in the correct locations.
   - Loop through all images confirming the position of all the features in each image.
+  - To go backward hit 'k'.
   
 ![GitHub Logo](proofreading.PNG)
-Format: ![Alt Text](url)
+Format: Proofreading lebeling of a fly leg (femur/tibia)
 
 This routine simply edits all of the bodypart.csv files.
 
@@ -88,5 +87,11 @@ This routine simply edits all of the bodypart.csv files.
 
 Now you're ready to move on with the rest of the training as described at https://github.com/AlexEMG/DeepLabCut, starting with "Step2_ConvertingLabels2DataFrame.py".
 
-Happy clicking!
+**Additional Scripts**
+- Methods_CycleThroughDirectoriesAndApplyScript.m will start at the parent directory and navigate to each movie directory in turn and run Methods_LabelSelectedFramesForDLC.m. 
+- If you have labeled a movie in the past and would like to label additional features that don't tend to move but are likely to be falsely identified by DLC, you can use the Methods_AddNewStaticBodyPart.m script to do that. 
+- Finally, you might start by labelling e.g. 170 frames of a particular movie but may not want to continue training the network on all of them in the future. In that case, Methods_SelectSubsetOfLabeledFramesForDLC.m with extract a random set of N images (line 12), storing the originals in a subdirectory. 
+
+**Happy clicking!**
+
 
