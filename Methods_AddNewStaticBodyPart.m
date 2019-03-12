@@ -10,7 +10,7 @@ folder = pwd; %'C:\Users\tony\Code\DeepLabCut_Tony\Generating_a_Training_Set\dat
 
 %% New Bodyparts
 % define the body parts you want to label:
-bodyparts = getacqpref('FlyAnalysis','DLCBodyparts');
+bodyparts = getpref('FlyAnalysis','DLCBodyparts');
 XLS_EDIT_OK = 1;
 
 %% Cleanup: Going to replace xls files anyways, so delete them here.
