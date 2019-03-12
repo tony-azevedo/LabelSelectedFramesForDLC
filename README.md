@@ -5,6 +5,8 @@ see https://github.com/AlexEMG/DeepLabCut
 
 Currently, generating a training set for DeepLabCut (DLC) requires opening randomly selected frames in FIJI or another editor. This script allows the user to label the random frames in MATLAB and to proofread the labeling.
 
+Update 3/12/19: This script was intended to make it easy to label selected frames for a training set for DeepLabCut. Since this was written for personal use, a new labelling toolbox has been created for DLC. I have not compared the functionality, feel free to incorporate any ideas or respond with questions.
+
 # Requirements
 
 **Matlab 2018a or later**: Methods_LablelSelectedFramesForDLC.m makes use of matlab "Tables", a data structure similar to DataFrames in pandas or tables in R. The script uses function calls available only in 2018a or later.
@@ -13,7 +15,10 @@ Currently, generating a training set for DeepLabCut (DLC) requires opening rando
 
 # Directions:
 
-First, follow directions on the DeepLabCut readme page to run "Step1_SelectRandomFrames_fromVideos.py". This first step will generate directories containing selected frames, with filenames "imgXXX.png" where XXX is the frame index. Note, this script generates .csv files for each body part, so in **myconfig.py** change the **multibodypartsfile** flag to **False**, as in the DLC reaching example.
+First, follow directions on the DeepLabCut readme page to run "Step1_SelectRandomFrames_fromVideos.py". This first step will generate directories containing selected frames, with filenames "imgXXX.png" where XXX is the frame index (see screenshots below). Note, this script generates .csv files for each body part, so in **myconfig.py** change the **multibodypartsfile** flag to **False**, as in the DLC reaching example.
+
+![GitHub Logo](TopLevelFolder.png)
+Format: ![Alt Text](url)
 
 # Before running the script 
 
