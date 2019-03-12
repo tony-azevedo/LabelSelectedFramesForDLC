@@ -15,7 +15,10 @@ Update 3/12/19: This script was intended to make it easy to label selected frame
 
 # Directions:
 
-First, follow directions on the DeepLabCut readme page to run "Step1_SelectRandomFrames_fromVideos.py". This first step will generate directories containing selected frames, with filenames "imgXXX.png" where XXX is the frame index. Note, this script generates .csv files for each body part, so in **myconfig.py** change the **multibodypartsfile** flag to **False**, as in the DLC reaching example.
+First, follow directions on the DeepLabCut readme page to run "Step1_SelectRandomFrames_fromVideos.py". This first step will generate directories containing selected frames, with filenames "imgXXX.png" where XXX is the frame index (see screenshots below). Note, this script generates .csv files for each body part, so in **myconfig.py** change the **multibodypartsfile** flag to **False**, as in the DLC reaching example.
+
+![GitHub Logo](TopLevelFolder.png)
+Format: ![Alt Text](url)
 
 # Before running the script 
 
