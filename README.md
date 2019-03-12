@@ -62,11 +62,14 @@ The first part of the routine is to label static and moving parts. The functiona
     - Click on the location of the feature, a magenta dot will appear to indicate the location and the next img will appear.
   
 ![GitHub Logo](Labeling.PNG)
-Format: Labeling parts of a fly leg (femur/tibia)
+**Figure:** Labeling parts of a fly leg (femur/tibia)
 
 After each feature is labeled, a .csv file is saved with the filename \<bodypart\>_points.csv. The static points are saved to a file "staticpoints.csv". If the labeling routine is interrupted for whatever reason, the script looks for saved "\<bodypart\>_points.csv" files and will skip those features, jumping to features that have not yet been labeled. If you want to relabel features, you can delete the "\<bodypart\>_points.csv" files or change the editing logicals on lines 17, 18, and 19.
 
 Finally, the script saves a file with the naming convention "\<bodypart\>.csv" for each bodypart, both moving and static. These files will be used in the subsequent "Step2_ConvertingLabels2DataFrame.py" routine to create a file "CollectedData_\<Scorer\>.csv" in the parent training set folder.
+
+![GitHub Logo](LabelFilesOutput.PNG)
+**Figure:** "\<bodypart\>.csv" files 
 
 **Proofread labeling**
 
@@ -79,7 +82,7 @@ Now the routine will loop back through each directory to proofread the labeling.
   - To go backward hit 'k'.
   
 ![GitHub Logo](proofreading.PNG)
-Format: Proofreading lebeling of a fly leg (femur/tibia)
+**Figure:** Proofreading labeling of a fly leg (femur/tibia)
 
 This routine simply edits all of the bodypart.csv files.
 
