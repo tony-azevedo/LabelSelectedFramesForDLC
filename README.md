@@ -3,9 +3,14 @@ Simple script to label imgXXX.png images for training sets for DLC
 
 see https://github.com/AlexEMG/DeepLabCut
 
-Currently, generating a training set for DeepLabCut (DLC) requires opening randomly selected frames in FIJI or another editor. This script allows the user to label the random frames in MATLAB and to proofread the labeling.
+Currently, generating a training set for DeepLabCut (DLC) requires opening randomly selected frames in FIJI or another editor. This script allows the user to label the random frames in MATLAB and to proofread the labeling. 
 
-Update 3/12/19: This script was intended to make it easy to label selected frames for a training set for DeepLabCut. Since this was written for personal use, a new labelling toolbox has been created for DLC. I have not compared the functionality, feel free to incorporate any ideas or respond with questions.
+**Key functionality**
+- label each feature sequentially (i.e. label the feature in each frame, then start at the first frame and label the next feature in each frame)
+- label all static features in a single frame without having to click on them repeatedly
+- proofread the labeling, drag features to adjust them, with ability to move backward and forward through frames
+
+Update 3/12/19: Since this was written for personal use, a new labeling toolbox has been created for DLC. I have not compared the functionality, feel free to incorporate any ideas or respond with questions.
 
 # Requirements
 
