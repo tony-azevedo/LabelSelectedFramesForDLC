@@ -16,7 +16,7 @@ Update 3/12/19: Since this was written for personal use, a new labeling toolbox 
 
 **Matlab 2018a or later**: Methods_LablelSelectedFramesForDLC.m makes use of matlab "Tables", a data structure similar to DataFrames in pandas or tables in R. The script uses function calls available only in 2018a or later.
 
-**distinguishable_colors**: the proofreading step below relies on plotting points for each feature in different colors that are easy to tell apart. This color map is produced by the matlab function distinguishable_colors(). Download it here: https://www.mathworks.com/matlabcentral/fileexchange/29702-generate-maximally-perceptually-distinct-colors; and put is somewhere on the matlab path.
+**distinguishable_colors**: the proofreading step below relies on plotting points for each feature in different colors that are easy to tell apart. This color map is produced by the matlab function distinguishable_colors(). Download it here: https://www.mathworks.com/matlabcentral/fileexchange/29702-generate-maximally-perceptually-distinct-colors; and put it somewhere on the matlab path.
 
 # Directions:
 
